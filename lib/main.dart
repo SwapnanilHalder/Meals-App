@@ -30,7 +30,9 @@ class MyApp extends StatelessWidget {
               ),
             ),
       ),
-      home: CategoriesScreen(),
+      routes: {
+        '/': (_) => CategoriesScreen(),
+      },
     );
   }
 }
