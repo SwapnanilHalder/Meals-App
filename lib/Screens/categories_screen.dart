@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Widget/griditems.dart';
+import '../Widget/grid_categories.dart';
 import '../Models/dummy_data.dart';
 
 class CategoriesScreen extends StatelessWidget {
@@ -20,7 +20,8 @@ class CategoriesScreen extends StatelessWidget {
         ),
         children: DUMMY_CATEGORIES
             .map(
-              (item) => GridItems(title: item.title, color: item.color),
+              (item) => GridCategories(
+                  title: item.title, color: item.color, id: item.id),
             )
             .toList(),
       ),
