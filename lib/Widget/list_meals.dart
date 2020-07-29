@@ -23,6 +23,7 @@ class ListMeals extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      splashColor: Theme.of(context).accentColor,
       onTap: () => true,
       child: Card(
         shape: RoundedRectangleBorder(
