@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/Screens/category_meals_screen.dart';
+import 'package:meals_app/Screens/meal_details_screen.dart';
 
 import './Screens/categories_screen.dart';
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Deli Meals App",
+      title: "Deli Meals",
       theme: ThemeData(
         primarySwatch: Colors.pink,
         accentColor: Colors.amber,
@@ -34,6 +35,27 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (_) => CategoriesScreen(),
         CategoryMealsScreen.routeName: (_) => CategoryMealsScreen(),
+        MealDetailsScreen.routeName: (_) => MealDetailsScreen(),
+      },
+      onGenerateRoute: (settings) {
+        print(
+            "You have accessed onGenerate route. This is only used for pages that are not tracked by home and routes. It is mostly used for some known bugs in your application.");
+        return MaterialPageRoute(
+          builder: (_) {
+            return CategoriesScreen();
+          },
+        );
+      },
+      onUnknownRoute: (settings) {
+        print("You have reached an unknown Page");
+        return MaterialPageRoute(
+          builder: (_) {
+            return Scaffold(
+              appBar: AppBar(title: Text("404 error")),
+              body: Center(child: Text("You have reached an unknown page")),
+            );
+          },
+        );
       },
     );
   }
