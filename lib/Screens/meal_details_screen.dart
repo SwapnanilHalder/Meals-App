@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Models/dummy_data.dart';
-import 'package:meals_app/Models/meal_builder.dart';
+import '../Models/meal_builder.dart';
 
 class MealDetailsScreen extends StatelessWidget {
   static const routeName = '/category-meals/meal-details';
@@ -25,9 +25,9 @@ class MealDetailsScreen extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            headings(context, "Ingredients"),
+            buildHeading(context, "Ingredients"),
             ingredientsList(meal),
-            headings(context, "Recipes"),
+            buildHeading(context, "Recipes"),
             recipeList(meal),
           ],
         ),
@@ -35,7 +35,7 @@ class MealDetailsScreen extends StatelessWidget {
     );
   } //build
 
-  Widget headings(BuildContext context, String heading) {
+  Widget buildHeading(BuildContext context, String heading) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       child: Text(

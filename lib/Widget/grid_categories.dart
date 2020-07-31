@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/Screens/category_meals_screen.dart';
+import '../Screens/category_meals_screen.dart';
 
 class GridCategories extends StatelessWidget {
   final String id;
