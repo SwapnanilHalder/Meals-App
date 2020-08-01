@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../Widget/main_drawer.dart';
 import '../Screens/categories_screen.dart';
 import '../Screens/favourites_screen.dart';
 
@@ -31,7 +32,9 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print("1 cm in pixel: " + (MediaQuery.of(context).size.height / 13.5).toStringAsFixed(2));
     return Scaffold(
+      drawer: MainDrawer(),
       appBar: AppBar(
         title: Text(_pages[_selectedPageIndex]['title']),
       ),
