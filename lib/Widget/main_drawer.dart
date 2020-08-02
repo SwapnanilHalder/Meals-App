@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../Screens/filters_screen.dart';
@@ -59,13 +60,19 @@ class MainDrawer extends StatelessWidget {
     switch (title) {
       case 'Meals':
         {
-          Navigator.of(context).pushReplacementNamed('/');
+          Navigator.of(context).pop();
+          Timer(Duration(milliseconds: 200), () {
+            Navigator.of(context).pushReplacementNamed('/');
+          });
         }
         break;
 
       case 'Settings':
         {
-          Navigator.of(context).pushReplacementNamed(FiltersScreen.routeName);
+          Navigator.of(context).pop();
+          Timer(Duration(milliseconds: 200), () {
+            Navigator.of(context).pushReplacementNamed(FiltersScreen.routeName);
+          });
         }
     }
   }

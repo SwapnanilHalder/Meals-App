@@ -1,26 +1,44 @@
 import 'package:flutter/material.dart';
+import '../Models/meal_builder.dart';
 import '../Widget/list_meals.dart';
 
 import '../Models/dummy_data.dart';
 
-class CategoryMealsScreen extends StatelessWidget {
+class CategoryMealsScreen extends StatefulWidget {
   static const routeName = '/category-meals';
-  // final String categoryId;
-  // final String categoryTitle;
 
-  // CategoryMealsScreen({
-  //   @required this.categoryId,
-  //   @required this.categoryTitle,
-  // });
+  @override
+  _CategoryMealsScreenState createState() => _CategoryMealsScreenState();
+}
+
+class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
+  bool updateList = false;
+  List<MealBuilder> categoryMeals;
+  String categoryId;
+
+  String categoryTitle;
+  void didChangeDependencies() {
+    if (!updateList) {
+      final Map<String, Object> routeArgs =
+          ModalRoute.of(context).settings.arguments;
+      categoryId = routeArgs['id'];
+      categoryTitle = routeArgs['title'];
+      categoryMeals = DUMMY_MEALS
+          .where((element) => (element.categories.contains(categoryId)))
+          .toList();
+      updateList = true;
+    }
+    super.didChangeDependencies();
+  }
+
+  void _removeItem(String id) {
+    setState(() {
+      categoryMeals.removeWhere((element) => (element.id == id));
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final Map<String, Object> routeArgs =
-        ModalRoute.of(context).settings.arguments;
-    final String categoryId = routeArgs['id'];
-    final String categoryTitle = routeArgs['title'];
-    final categoryMeals = DUMMY_MEALS
-        .where((element) => (element.categories.contains(categoryId)))
-        .toList();
     return Scaffold(
       appBar: AppBar(
         title: Text('$categoryTitle : ID: $categoryId'),
@@ -36,6 +54,7 @@ class CategoryMealsScreen extends StatelessWidget {
             duration: item.duration,
             affordability: item.affordability,
             complexity: item.complexity,
+            removeItem: _removeItem,
           );
         },
       ),
