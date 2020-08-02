@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
                 color: Color.fromRGBO(20, 51, 51, 1),
               ),
               headline6: TextStyle(
-                fontSize: 20,
+                fontSize: 26,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'RobotoCondensed',
               ),
@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         '/': (_) => TabsScreen(),
         CategoryMealsScreen.routeName: (_) => CategoryMealsScreen(),
         MealDetailsScreen.routeName: (_) => MealDetailsScreen(),
-        FiltersScreen.routeName : (_) => FiltersScreen(),
+        FiltersScreen.routeName: (_) => FiltersScreen(),
       },
       onGenerateRoute: (settings) {
         print(
