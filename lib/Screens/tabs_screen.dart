@@ -1,26 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:meals_app/Models/meal_builder.dart';
 import '../Widget/main_drawer.dart';
 import '../Screens/categories_screen.dart';
 import '../Screens/favourites_screen.dart';
 
 class TabsScreen extends StatefulWidget {
-  TabsScreen({Key key}) : super(key: key);
+  final List<MealBuilder> favouriteMeals;
+  TabsScreen(this.favouriteMeals);
 
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  final List<Map> _pages = [
-    {
-      "page": CategoriesScreen(),
-      "title": "Category of Meals",
-    },
-    {
-      "page": FavouritesScreen(),
-      "title": "Your Favourites",
-    }
-  ];
+  List<Map> _pages;
+
+  @override
+  void initState() {
+    super.initState();
+    _pages = [
+      {
+        "page": CategoriesScreen(),
+        "title": "Category of Meals",
+      },
+      {
+        "page": FavouritesScreen(widget.favouriteMeals),
+        "title": "Your Favourites",
+      }
+    ];
+  }
 
   int _selectedPageIndex = 0;
 
@@ -32,7 +40,8 @@ class _TabsScreenState extends State<TabsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print("1 cm in pixel: " + (MediaQuery.of(context).size.height / 13.5).toStringAsFixed(2));
+    print("1 cm in pixel: " +
+        (MediaQuery.of(context).size.height / 13.5).toStringAsFixed(2));
     return Scaffold(
       drawer: MainDrawer(),
       appBar: AppBar(

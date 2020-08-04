@@ -6,6 +6,11 @@ import '../Models/meal_builder.dart';
 class MealDetailsScreen extends StatelessWidget {
   static const routeName = '/category-meals/meal-details';
 
+  final Function _isFavourite;
+  final Function _toggleFavourite;
+
+  MealDetailsScreen(this._isFavourite, this._toggleFavourite);
+
   @override
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context).settings.arguments;
@@ -13,6 +18,15 @@ class MealDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(meal.title),
+        actions: <Widget>[
+          IconButton(
+            icon:
+                Icon(_isFavourite(id) ? Icons.favorite : Icons.favorite_border),
+            onPressed: () {
+              return _toggleFavourite(id);
+            },
+          )
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -35,8 +49,10 @@ class MealDetailsScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.of(context).pop(id),
         backgroundColor: Theme.of(context).primaryColor,
-        child: Icon(Icons.delete, color: Colors.white,),
-
+        child: Icon(
+          Icons.delete,
+          color: Colors.white,
+        ),
       ),
     );
   } //build
