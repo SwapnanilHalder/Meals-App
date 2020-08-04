@@ -62,7 +62,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     _favouriteMeals.forEach((meal) {
-      print(meal.title + ' , ');
+      print("Favourite meals : " + meal.title);
     });
     _availableMeals.forEach((meal) {
       print("available meals " + meal.title);
