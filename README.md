@@ -1,4 +1,4 @@
-# meals_app
+# FlavorFolio
 
 This is an app built with Flutter, using Dart Programming Language.
 This app has a grid of food items category on its front page. Whenever we click a category, it directs us to another page with all the food items in that category. Then we can click on those food items and that would redirect us to a page, where we can get the recipe for that food. Also we can select fovourite for certain food items, then there will be a section at the bottom, clicking which will show us all those favourite food items.
